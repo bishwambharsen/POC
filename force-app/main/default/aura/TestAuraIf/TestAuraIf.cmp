@@ -1,0 +1,14 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="first" type="String[]" default="['Barry','Eobard','Harrison']" />
+    <aura:attribute name="second" type="String[]" default="['Allen','Thawne','Wells']" />
+    <aura:if isTrue="{!v.first==v.second}">
+        Successful test
+    </aura:if>
+    <aura:iteration items="{!v.first}" var="item" indexVar="i">
+        <aura:iteration items="{!v.second}" var="item1" indexVar="j">
+            <aura:if isTrue="{!i==j}">
+                <p> {!item+' '+item1}</p>
+            </aura:if>
+        </aura:iteration>
+    </aura:iteration>
+</aura:component>

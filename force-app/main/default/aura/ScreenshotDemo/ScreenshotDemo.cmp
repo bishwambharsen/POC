@@ -1,0 +1,26 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <ltng:require scripts="{!$Resource.HTML2Canvas}" afterScriptsLoaded="{!c.scriptsLoaded}"/>
+    
+    <aura:attribute name="Name" type="string"/>
+    <aura:attribute name="Age" type="Integer"/>
+    <aura:attribute name="Class" type="string"/>
+    
+    <div id="capture">Hello testing</div>
+    <lightning:card aura:id="capture" title="Screenshot Demo">
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem padding="around-small">
+                <lightning:input label="Name" value="{!v.Name}" />
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <lightning:input label="Age" value="{!v.Age}"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <lightning:input label="Class" value="{!v.Class}"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small" size="12">
+                <lightning:button variant="brand" label="Take Screenshot" iconName="utility:photo" onclick="{!c.capture}"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:card>
+    
+</aura:component>

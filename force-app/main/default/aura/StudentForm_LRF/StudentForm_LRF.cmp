@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName">
+    <aura:attribute name="fields" type="List" default="Name,Age__c,Department__c"/>
+    <lightning:card title="Student details">
+        <lightning:recordForm aura:id="studentForm"
+                              objectApiName="{!v.sObjectName}"
+                              recordId="{!v.recordId}"
+                              fields="{!v.fields}"
+                              mode="view" />
+    </lightning:card>
+</aura:component>

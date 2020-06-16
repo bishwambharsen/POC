@@ -1,0 +1,24 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global"
+                controller="StudentController">
+    <aura:attribute name="students" type="Student__c[]" default="[]"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>
+    
+    <lightning:notificationsLibrary aura:id="notifsLib"/>
+    
+    <lightning:card title="Add Students" iconName="standard:account">
+        <aura:if isTrue="{!v.showSpinner}">
+            <lightning:spinner size="medium" alternativeText="Saving students..."/>
+        </aura:if>
+        <lightning:layout multipleRows="true">
+            <aura:iteration items="{!v.students}" var="student">
+                <lightning:layoutItem padding="around-small">
+                    <c:AddStudent student="{!student}"/>
+                </lightning:layoutItem>
+            </aura:iteration>
+        </lightning:layout>
+        <aura:set attribute="footer">
+            <lightning:button label="Add Student" iconName="utility:add" onclick="{!c.addStudent}"/>
+            <lightning:button label="Submit" variant="brand" iconName="utility:save" onclick="{!c.submit}"/>
+        </aura:set>
+    </lightning:card>
+</aura:component>

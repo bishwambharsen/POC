@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="imageUrl" type="String"
+                    default="http://1.bp.blogspot.com/-j-ukI5O0OUs/Tljrols2JcI/AAAAAAAAChg/5Olp0QDa2gA/s1600/Ladakh_Tourism20.jpg"/>
+    <lightning:card title="Small Image">
+        <img src="{!v.imageUrl}" alt="Small Image" onclick="{!c.showPreview}"/>
+    </lightning:card>
+    <c:ImagePreviewe aura:id="preview" imageUrl="{!v.imageUrl}" class="slds-hide"/>
+</aura:component>

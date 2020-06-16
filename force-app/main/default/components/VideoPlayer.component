@@ -1,0 +1,5 @@
+<apex:component >
+    <iframe width="560" height="315" src="/sfc/servlet.shepherd/version/download/0690K00000PNP9iQAH" 
+            frameborder="0"  
+            allowfullscreen="true"></iframe> 
+</apex:component>

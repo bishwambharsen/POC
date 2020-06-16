@@ -1,0 +1,31 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" 
+                controller="StudentController"
+                access="global" >
+    
+    <aura:attribute name="student" type="Student__c" 
+                    default="{
+                             'sobjectType' : 'Student__c',
+                             'Name' : '',
+                             'Age__c' : '',
+                             'Department__c' : ''
+                             }" />
+    <aura:registerEvent name="updStudEvent" type="c:updateStudents" />
+    <aura:registerEvent name="compEvent" type="c:CompEvent" />
+    <div>
+        <lightning:spinner aura:id="spinner" variant="brand" alternativeText="Loading..."
+                           class="slds-hide"/>
+    </div>
+    <fieldset class="slds-box slds-theme--default slds-container--small">
+        <legend id="student-registration-form" class="slds-text-heading--smallslds-p-vertical--medium">
+            Student Registration
+        </legend>
+        
+        <form class="slds-form--stacked">
+            <div class="slds-form-element"> <ui:inputText aura:id="name" class="slds-input" label="Name" value="{!v.student.Name}" required="true" placeholder="Enter name" /></div>
+            <div class="slds-form-element"> <ui:inputNumber aura:id="age" class="slds-input" label="Age" value="{!v.student.Age__c}" required="true" placeholder="Enter age"/></div>
+            <div class="slds-form-element"> <ui:inputText aura:id="dept" class="slds-input" label="Department" value="{!v.student.Department__c}" required="true" placeholder="Enter department" /></div>
+            <div class="slds-form-element"> <lightning:button aura:id="btnSubmit" variant="brand" label="Submit" onclick="{!c.saveStudent}"/></div>
+        </form>
+    </fieldset>
+    
+</aura:component>

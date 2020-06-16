@@ -1,0 +1,32 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" 
+                controller="FileController"
+                access="global" >
+    <aura:attribute name="fileIds" type="List" default="[]"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+    
+    <lightning:notificationsLibrary aura:id="notif"/>
+    
+    
+    <lightning:card title="File Previewer">
+        <aura:if isTrue="{!v.isLoading}">
+            <lightning:spinner alternativeText="loading..."/>
+        </aura:if>
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem padding="around-small" size="10">
+                <lightning:fileUpload recordId="{!v.recordId}" label="Upload File(s)"
+                                      multiple="true"
+                                      onuploadfinished="{!c.handleUploadComplete}"/>
+            </lightning:layoutItem>
+            <aura:iteration items="{!v.fileIds}" var="fileId">
+                <lightning:layoutItem padding="around-small">
+                    <lightning:fileCard fileId="{!fileId}" />
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small">
+                    <lightning:buttonIcon iconName="utility:delete"  
+                                      title="{!fileId}"
+                                      onclick="{!c.deleteFile}"/>
+                </lightning:layoutItem>
+            </aura:iteration>
+        </lightning:layout>
+    </lightning:card>
+</aura:component>

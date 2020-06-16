@@ -1,0 +1,8 @@
+<aura:component>
+   <!-- <aura:import library="lightning:clickToDialService" property="clickToDialService"/>-->
+    <lightning:button label="enableClickToDial" onclick="{! c.enableClickToDial }"/>
+    <lightning:button label="disableClickToDial" onclick="{! c.disableClickToDial }"/>
+    <lightning:button label="onClickToDial" onclick="{! c.onClickToDial }"/>
+    <p><lightning:clickToDial value="14155555554"/></p>
+    <p><lightning:clickToDial value="14155555555"/></p>
+</aura:component>

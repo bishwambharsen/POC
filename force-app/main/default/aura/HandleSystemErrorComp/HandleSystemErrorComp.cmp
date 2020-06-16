@@ -1,0 +1,7 @@
+<aura:component controller="ExceptionGenerator">
+    <aura:handler event="aura:systemError" action="{!c.showSystemError}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="response" type="Aura.Action"/>
+    <!-- Other component markup here -->
+    <ui:button aura:id="trigger" label="Trigger error" press="{!c.trigger}"/>
+</aura:component>

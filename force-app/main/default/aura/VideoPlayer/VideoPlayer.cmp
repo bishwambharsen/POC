@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global"
+                >
+    
+    <iframe width="560" height="315" src="/sfc/servlet.shepherd/version/download/0680K00000R5vK5QAJ" 
+            frameborder="0" 
+            allowfullscreen="true"></iframe> 
+</aura:component>

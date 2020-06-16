@@ -1,0 +1,7 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute type="Boolean" name="show" default="false" />
+    <a href="javascript://(0);" onclick="{!c.clickMe}">Click me</a>
+    <div id="container" style="display:none;">
+        <c:CustomComponent />
+    </div>
+</aura:component>

@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="fileIds" type="Id[]" />
+    
+    <aura:handler  event="c:enableFileUpload" action="{!c.setRecordId}"/>
+    
+    <lightning:fileUpload  name="fileUploader"
+                           label= "Sample Upload"
+                           multiple="true"
+                           recordId="{!v.recordId}"
+                           onuploadfinished="{! c.handleUploadFinished }"/>
+    
+    <aura:iteration items="{!v.fileIds}" var="fileId">
+        <lightning:fileCard fileId="{!fileId}"/>
+    </aura:iteration>
+</aura:component>

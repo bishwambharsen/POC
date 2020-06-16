@@ -1,0 +1,11 @@
+<aura:component >
+    <aura:registerEvent name="eventFirer" type="c:TestEvent" />
+    <aura:attribute name="student" type="Student__c" default="{
+                                                              'sobjectType' : 'Student__c',
+                                                              'Name' : 'Samba',
+                                                              'Age__c' : 23,
+                                                              'Department__c' : 'Dakaiti'
+                                                              }" />
+    
+    <ui:button aura:id='btnFireEvent' label="Fire" press="{!c.fireTestEvent}" />
+</aura:component>

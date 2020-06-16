@@ -1,0 +1,47 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global"
+                controller="StudentController">
+    <aura:attribute name="students" type="Object" />
+    <aura:attribute name="columns" type="List" />
+    
+    <ltng:require styles="{! $Resource.	datatable + '/DataTables-1.10.16/media/css/jquery.dataTables.min.css'}" 
+                  scripts="{!join(',', 
+                           $Resource.jquery224 , 
+                           $Resource.datatable + '/DataTables-1.10.16/media/js/jquery.dataTables.min.js')
+                           }" afterScriptsLoaded="{!c.scriptsLoaded}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:updateStudents" action="{!c.handleUpdateStudents}" />
+    
+    <aura:registerEvent name="enableFileUpload" type="c:enableFileUpload"/>
+    
+    <lightning:card title="Students" iconName="standard:account">
+        <!-- <div style="height: 500px">
+            <lightning:datatable title="Student List"
+                                 keyField="id"
+                                 data="{! v.students }"
+                                 columns="{! v.columns }"
+                                 onrowselection="{!c.enableFileUpload}" />
+        </div>-->
+        <div class="slds-m-around_medium">
+            <table id="tableId" class="slds-table slds-table_bordered slds-table_cell-buffer" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Department</th>
+                        <th>Test</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.students}" var="student">
+                        <tr>
+                            <td>{!student.Name}</td>
+                            <td>{!student.Age__c}</td>
+                            <td>{!student.Department__c}</td>
+                        </tr>
+                    </aura:iteration>  
+                </tbody>
+            </table>
+        </div>
+    </lightning:card>
+</aura:component>

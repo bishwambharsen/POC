@@ -1,0 +1,39 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="student" type="Object"/>
+    <aura:attribute name="error" type="String" />
+    <aura:attribute name="studentId" type="Id"/>
+    
+    <aura:handler event="c:enableFileUpload" action="{!c.getStudentRecord}"/>
+    
+    <aura:if isTrue="{! v.studentId}">
+        <force:recordData aura:id="forceRecordCmp"
+                          recordId="{!v.studentId}"
+                          fields="Name, Age__c, Department__c"
+                          targetFields="{!v.student}"
+                          targetError="{!v.error}"
+                          />
+        
+        
+        <lightning:card iconName="action:delete" title="Student details">
+            <p class="slds-p-horizontal_small">
+                Name: {!v.student.Name}
+            </p>
+            <p class="slds-p-horizontal_small">
+                Age: {!v.student.Age__c}
+            </p>
+            <p class="slds-p-horizontal_small">
+                Department: {!v.student.Department__c}
+            </p>
+            <p class="slds-p-horizontal_small">
+                <lightning:button variant="destructive" label="Delete" onclick="{!c.deleteStudent}"/>
+            </p>
+        </lightning:card>
+    </aura:if>
+    <aura:if isTrue="{!not(empty(v.error))}">
+        <div class="recordError">
+            <ui:message title="Error" severity="error" closable="true">
+                {!v.error}
+            </ui:message>
+        </div>
+    </aura:if>
+</aura:component>

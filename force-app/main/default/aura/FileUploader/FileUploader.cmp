@@ -1,0 +1,4 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+	<lightning:fileUpload recordId="0050K000009Y3W0"
+                          />
+</aura:component>

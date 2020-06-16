@@ -1,0 +1,50 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="student" type="Object" />
+    <aura:attribute name="newStudent" type="Object" />
+    <aura:attribute name="error" type="String" />
+    <aura:attribute name="fields" type="String[]" default="Name, Age__c, Department__c"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="recordIdCarrier" type="c:enableFileUpload"/>
+    
+    <force:recordData aura:id="forceRecordCmp"
+                      fields="{!v.fields}"
+                      targetRecord="{!v.newStudent}"
+                      targetFields="{!v.student}"
+                      targetError="{!v.error}" />
+    
+    
+    
+    <fieldset class="slds-box slds-theme--default slds-container--small">
+        <legend id="student-registration-form" class="slds-text-heading--smallslds-p-vertical--medium">
+            Student Registration
+        </legend>
+        
+        <lightning:input aura:id="studentField" label="Name" value="{!v.student.Name}"
+                         placeholder="Enter Name" required="true"/>
+        
+        
+        <lightning:input aura:id="studentField" type="number" label="Age" required="true"
+                         value="{!v.student.Age__c}" placeholder="Enter Age"/>
+        
+        
+        <lightning:input aura:id="studentField"  label="Department" required="true"
+                         value="{!v.student.Department__c}" placeholder="Enter Department"/>
+        
+        <br/>
+        <lightning:button aura:id="btnSubmit" variant="brand" label="Save" 
+                          onclick="{!c.handleSaveStudent}"/>
+        
+        
+    </fieldset>
+    
+    <aura:if isTrue="{!not(empty(v.error))}">
+        <div class="recordError">
+            <ui:message title="Error" severity="error" closable="true">
+                {!v.error}
+            </ui:message>
+        </div>
+    </aura:if>
+    
+    
+</aura:component>

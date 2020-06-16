@@ -1,0 +1,29 @@
+<aura:component controller="ContactController">
+    <aura:attribute name="Contacts" type="Contact[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+    	<thead>
+            <tr class="slds-text-title--caps">
+              <th scope="col">
+                <div class="slds-truncate" title="First Name">First Name</div>
+              </th>
+              <th scope="col">
+                <div class="slds-truncate" title="Last Name">Last Name</div>
+              </th>
+              <th scope="col">
+                <div class="slds-truncate" title="Mobile Phone">Mobile Phone</div>
+              </th>
+            </tr>
+        </thead>
+        <tbody>
+        	<aura:iteration items="{!v.Contacts}" var="contact">
+                <tr>
+                    <td>{!contact.FirstName}</td>
+                    <td>{!contact.LastName}</td>
+                    <td>{!contact.MobilePhone}</td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>
