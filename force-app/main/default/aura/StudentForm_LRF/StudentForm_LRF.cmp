@@ -4,14 +4,23 @@
   @Author             : bishwambhar.sen@sen-force.com
   @Group              : 
   @Last Modified By   : bishwambhar.sen@sen-force.com
-  @Last Modified On   : 6/25/2020, 9:30:23 PM
+  @Last Modified On   : 07-28-2020
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    6/25/2020   bishwambhar.sen@sen-force.com     Initial Version
 -->
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName">
-    <aura:attribute name="fields" type="List" default="Name,Age__c,Department__c" />
+    <!-- <aura:attribute name="fields" type="List" default="Name,Age__c,Department__c" />
     <lightning:card title="Student details" iconName="standard:account">
         <lightning:recordForm aura:id="studentForm" objectApiName="{!v.sObjectName}" recordId="{!v.recordId}" fields="{!v.fields}" mode="view" />
+    </lightning:card> -->
+    <lightning:card title="Student details" iconName="standard:account">
+        <lightning:recordEditForm recordId="{!v.recordId}" objectApiName="{!v.sObjectName}">
+            <lightning:messages />
+            <lightning:inputField fieldName="Name" required="true" />
+            <lightning:inputField fieldName="Age__c" />
+            <lightning:inputField fieldName="Department__c" />
+            <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" />
+        </lightning:recordEditForm>
     </lightning:card>
 </aura:component>
