@@ -13,9 +13,13 @@ public with sharing class  StudentController {
     @AuraEnabled
     public static Student__c save(Student__c student){
        try {
-           if(Schema.SObjectType.Student__c.isCreateable())
+           if(Schema.SObjectType.Student__c.isCreateable()){
                 insert student;
-           return student;
+                return student;
+           }else{
+               throw new AuraHandledException('The user doesnt have permission to create a student.');
+           }
+                
        } catch (Exception e) {
            throw new AuraHandledException(e.getMessage());
        } 
@@ -37,6 +41,9 @@ public with sharing class  StudentController {
        try {
            if(Schema.SObjectType.Student__c.isCreateable())
                 insert students;
+            else {
+                throw new AuraHandledException('The user doesnt have permission to create student records.');
+            }
        } catch (Exception e) {
            throw new AuraHandledException(e.getMessage());
        } 
